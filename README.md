@@ -2,7 +2,7 @@
 
 ## Overview
 
-Most dApps offer to their users the choice to select their gas fee bids with a "slow", "average" and "fast" options. These options represent the amount of gas you will offer to miners to include your transaction in a block -- the higher the bid, the quicker the transaction will be mined.
+Most dApps offer to their users the choice to select their gas fee bids with a "slow", "average" and "fast" options. These options represent the amount of gas you will offer to miners to include your transaction in a block -- the higher the bid, the faster the transaction will be included in a block and mined.
 
 Users will consider different gas bids depending on the relevance of the transaction, for that reason is important to offer a range of options to satisfy all needs.
 

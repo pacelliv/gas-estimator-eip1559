@@ -305,7 +305,7 @@ This estimator as it is, might not be viable for production. Running these calcu
 
 Usually clients like Geth use entities called "Oracles" whose only job is keeping track of blocks and other data. Geth will ask the Oracle for a current estimate of the fees and get an immediate answer.
 
-Currently we're calculating the 30th, 60th and 90th percentiles of the `maxPriorityFeePerGas`, but you could change this values to get the 10th percentile and even the 1th percentiles to offer lower fees that have been paid in transactions. Just keep in mind that paying a lower bid is proportional to wait longer period of time for the transaction to be picked up and included in a block.
+Currently we're calculating the 30th, 60th and 90th percentiles of the `maxPriorityFeePerGas`, but you could change these values to get the 10th percentile or even the 1th percentiles of the fees that have been paid in transactions. Just keep in mind that paying a lower bid is proportional to wait longer period of time for the transaction to be picked up and included in a block.
 
 ## Resources 📚
 

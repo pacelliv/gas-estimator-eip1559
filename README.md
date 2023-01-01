@@ -256,7 +256,7 @@ So far we've only made an estimation for the `maxPriorityFeePerGas` that the use
 
 Now let's present to the users the full fee to pay and the `slow`, `average` and `fast` options they might consider to bid.
 
-We need to refactor our `gasEstimator` agan, make it look like this:
+We need to refactor our `gasEstimator` again, make it look like this:
 
 ```javascript
 async function gasEstimator() {

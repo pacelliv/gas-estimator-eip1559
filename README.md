@@ -315,6 +315,6 @@ Currently we're calculating the 30th, 60th and 90th percentiles of the `maxPrior
 
 ## Outro ⭐️
 
-Congratulations 💯 for completing this tutorial, despite this estimator might not being viable for production is was fun building, we learned a lot about how the EVM works regarding fees.
+Congratulations 💯 for completing this tutorial, despite this estimator not being viable for production it was fun building it and making this tutorial, we learned a lot about how the EVM works regarding fees.
 
 I hope you enjoyed this tutorial and I encouraged you to make your own modifications and try new things. 👩🏻‍💻 👨🏻‍💻 🎉

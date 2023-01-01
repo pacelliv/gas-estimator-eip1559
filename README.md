@@ -49,9 +49,9 @@ module.exports = {
 ```
 As you can see, in this project we use environment variables to handle our keys. See the `.env-example` file to see what you should put in your `.env` file. **Never use a private key associated with real funds for testing purposes, create a new wallet and import the private key**.
 
-For this tutorial to interact with Ethereum network we need a RPC URL, which is a point to which we can connect and make API calls to interact with the blockchain, [Alchemy](https://www.alchemy.com/) offer free RPC url so go there and get one.
+For this tutorial to interact with Ethereum network we need a RPC URL, which is a point to which we can connect and make API calls to interact with the blockchain, [Alchemy](https://www.alchemy.com/) offer free RPC url, all you need to do is create a account with them to get one.
 
-To complete the structure of the project create a `.prettierc`, `.prettierignore` and `.gitignore` files and paste in them the contents that appear in the repo of the tutorial.
+To complete the structure of the project create the following files: `.prettierrc`, `.prettierignore` and `.gitignore` and paste in them the contents that appear in the [repo of the tutorial](https://github.com/pacelliv/gas-estimator-eip1559).
 
 ## Building the gas estimator
 

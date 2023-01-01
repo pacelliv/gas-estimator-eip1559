@@ -108,7 +108,7 @@ In this file we will make a few API calls to get fee and block data to have more
 
 ```javascript
 const { ethers } = require("hardhat")
-const { quantile,mean, sum } = require("../utils/helperFunctions.js")
+const { quantile, mean, sum } = require("../utils/helperFunctions.js")
 
 async function gasEstimator() {
     const blockNumber = await ethers.provider.getBlockNumber()

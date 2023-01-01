@@ -47,9 +47,9 @@ module.exports = {
     },
 }
 ```
-As you can see, in this project we use environment variables to handle our keys. See the `.env example` file to see what you should put in your `.env` file. **Never use a private key associated with real funds for testing purposes, create a new wallet and import the private key**.
+As you can see, in this project we use environment variables to handle our keys. See the `.env-example` file to see what you should put in your `.env` file. **Never use a private key associated with real funds for testing purposes, create a new wallet and import the private key**.
 
-You can get the `RPC_URL` from [Alchemy](https://www.alchemy.com/) for free.
+For this project we only need a RPC URL, to interact and read from the network. You can get the `RPC_URL` from [Alchemy](https://www.alchemy.com/) for free.
 
 To complete the structure of the project create a `.prettierc`, `.prettierignore` and `.gitignore` files and paste in them the contents that appear in the repo of the tutorial.
 

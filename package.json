@@ -1,7 +1,7 @@
 {
   "name": "eip-1559-gas-estimator",
   "version": "1.0.0",
-  "author": "Eugenio Pacelli Flores <e.flores@gmail.com>",
+  "author": "Eugenio Pacelli Flores <e.floresvoitier@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",

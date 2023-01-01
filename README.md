@@ -220,7 +220,7 @@ async function gasEstimator() {
     // we add the values
     const firtPercentilesSum = sum(slowMaxPriorityFee)
 
-    // we give our estimes for the 30th percentile
+    // we give our estimate for the 30th percentile
     console.log(
         "Manual estimate:",
         firtPercentilesSum / slowMaxPriorityFee.length

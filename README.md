@@ -49,7 +49,7 @@ module.exports = {
 ```
 As you can see, in this project we use environment variables to handle our keys. See the `.env-example` file to see what you should put in your `.env` file. **Never use a private key associated with real funds for testing purposes, create a new wallet and import the private key**.
 
-For this project we only need a RPC URL, to interact and read from the network. You can get the `RPC_URL` from [Alchemy](https://www.alchemy.com/) for free.
+For this tutorial to interact with Ethereum network we need a RPC URL, which is a point to which we can connect and make API calls to interact with the blockchain, [Alchemy](https://www.alchemy.com/) offer free RPC url so go there and get one.
 
 To complete the structure of the project create a `.prettierc`, `.prettierignore` and `.gitignore` files and paste in them the contents that appear in the repo of the tutorial.
 
@@ -301,7 +301,7 @@ Manual estimate: { slow: 14271043641, average: 14396043641, fast: 15146143641 }
 
 ## Outro ⭐️
 
-Congratulations 💯 for completing this tutorial, it was fun building this estimator, but it might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not resulto in good performance.
+Congratulations 💯 for completing this tutorial, it was fun building this estimator, but it might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not result in good performance.
 
 Usually clients like Geth use entities called "Oracles" whose only job is keeping track of blocks and other data. Geth will ask the Oracle for a current estimate of the fees and get a immediate answer.
 

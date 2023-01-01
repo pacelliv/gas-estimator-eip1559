@@ -309,9 +309,9 @@ Currently we're calculating the 30th, 60th and 90th percentiles of the `maxPrior
 
 ## Resources 📚
 
-[Hardhat](https://hardhat.org/docs)
-[Ethers.js](https://docs.ethers.org/v5/)
-[Gas and fees](https://ethereum.org/en/developers/docs/gas/)
+- [Hardhat](https://hardhat.org/docs)
+- [Ethers.js](https://docs.ethers.org/v5/)
+- [Gas and fees](https://ethereum.org/en/developers/docs/gas/)
 
 ## Outro ⭐️
 

@@ -243,7 +243,7 @@ yarn hardhat run scripts/gasFeeEstimator.js --network mainnet
 The output should look like this:
 
 ```
-Manual estimate 1045851079
+Manual estimate: 1045851079
 Recommended value by the network: 1500000000
 ```
 

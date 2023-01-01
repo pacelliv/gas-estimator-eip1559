@@ -309,10 +309,12 @@ Currently we're calculating the 30th, 60th and 90th percentiles of the `maxPrior
 
 ## Resources 📚
 
+[Hardhat](https://hardhat.org/docs)
+[Ethers.js](https://docs.ethers.org/v5/)
 [Gas and fees](https://ethereum.org/en/developers/docs/gas/)
 
 ## Outro ⭐️
 
 Congratulations 💯 for completing this tutorial, despite this estimator might not being viable for production is was fun building, we learned a lot about how the EVM works regarding fees.
 
-I hope you enjoyed this tutorial and I encouraged you to make your own modifications and try new things. 👩🏻‍💻 🎉 👨🏻‍💻 🎉
+I hope you enjoyed this tutorial and I encouraged you to make your own modifications and try new things. 👩🏻‍💻 👨🏻‍💻 🎉

@@ -299,7 +299,7 @@ The result:
 Manual estimate: { slow: 14271043641, average: 14396043641, fast: 15146143641 }
 ```
 
-## Final thoughts 💭
+## Closing thoughts 💭
 
 This estimator as it is, might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not result in good performance.
 

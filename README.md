@@ -152,7 +152,7 @@ gasEstimator()
 Our `gasEstimator.js` file consists of two functions:
 
 - `gasEstimator`: makes API calls to the network to collect block and fee raw data from the previous 4 blocks, and pass this data to `dataFormatter`.
-- `dataFormatter`: receives the the raw data from `gasEstimator` function, it filters the transactions of `Txn Type: 2 (EIP-1559)` and mapped them in new arrays, calls `quantile` (see code below) to get the 30th, 60th and 90% percentiles of `maxPriorityFeePerGas` paid in transactions and finally creates new objects to send back formatted data back to `gasEstimator`.
+- `dataFormatter`: receives the the raw data from `gasEstimator` function, it filters the transactions of `Txn Type: 2 (EIP-1559)` and mapped them in new arrays, calls `quantile` (see code below) to get the 30th, 60th and 90th percentiles of `maxPriorityFeePerGas` paid in transactions and finally creates new objects to send back formatted data back to `gasEstimator`.
 
 ### Relationship between `gasUsedRatio` and `baseFeePerGas`
 

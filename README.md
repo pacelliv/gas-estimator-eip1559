@@ -6,7 +6,7 @@ Most dApps offer to their users the choice to select their gas fee bids with a "
 
 Users will consider different gas bids depending on the relevance of the transaction, for that reason is important to offer a range of options to satisfy all needs.
 
-In this project we will build a gas estimator that complies with [EIP-1559](https://www.youtube.com/watch?v=MGemhK9t44Q) using Hardhat development framework and Ethers.js library. This gas estimator will make API calls to collect and track fee data from the network to programatically estimate different fee bids to include in a transaction.
+In this project we will build a gas estimator that complies with [EIP-1559](https://www.youtube.com/watch?v=MGemhK9t44Q) using Hardhat development framework and Ethers.js library. This gas estimator will make API calls to collect and track fee data from the network to programatically estimate a range of fee bids to include in a transaction.
 
 ## Setting up the project
 
@@ -69,7 +69,7 @@ The answers to these questions will help us determine how much to bid to miners 
 
 To simplify things, let's create a couple of new folders and paste some code and then we will explain them. 
 
-For our gas estimator to perform its tasks appropiately, we need a few helper functions that will handle some of the math to help our estimator.
+For our gas estimator to perform its tasks appropiately, we need a few helper functions that will handle some of the math.
 
 Create a new folder named `utils` and in it create a file with the name `helperFunctions.js` and paste the following content:
 
@@ -98,11 +98,11 @@ module.exports = {
     sum
 }
 ```
-Feel free the comments to know what are the tasks of these functions and let's continue.
+Feel free to read to take your time in reading the functions and the comments how these functions work and let's continue.
 
 ### Gas estimator functions
 
-Now let's create a new folder named `scripts` and in it create a new file named `gasEstimator.js` and paste the code you see below. 
+Now let's create a new folder named `scripts` and in it create a new file named `gasFeeEstimator.js` and paste the code you see below. 
 
 In this file we will make a few API calls to get fee and block data to have more in-depth study of the metrics.
 
@@ -149,14 +149,14 @@ gasEstimator()
     })
 ```
 
-Our `gasEstimator.js` file consists of two functions:
+Our `gasFeeEstimator.js` file consists of two functions:
 
-- `gasEstimator`: makes API calls to the network to collect block and fee raw data from the previous 4 blocks, and pass this data to `dataFormatter`.
-- `dataFormatter`: receives the the raw data from `gasEstimator` function, it filters the transactions of `Txn Type: 2 (EIP-1559)` and mapped them in new arrays, calls `quantile` (see code below) to get the 30th, 60th and 90th percentiles of `maxPriorityFeePerGas` paid in transactions and finally creates new objects to send back formatted data back to `gasEstimator`.
+- `gasEstimator`: makes API calls to the network to collect raw data from previous 4 blocks, and pass this data to `dataFormatter`.
+- `dataFormatter`: receives the raw data from the `gasEstimator` function, filters the transactions of `Txn Type: 2 (EIP-1559)` and mapped them into new arrays, then, calls `quantile` to get the 30th, 60th and 90th percentiles of `maxPriorityFeePerGas` paid in transactions, and finally creates new objects to that are send back as formatted data to `gasEstimator`.
 
 ### Relationship between `gasUsedRatio` and `baseFeePerGas`
 
-After setting up our `gasEstimator` and `helperFunctions`, we can cover this important relationship, which is the central point of `EIP-1559`, to do this run the following command:
+After setting up our `gasFeeEstimator` and `helperFunctions` files we can cover this important relationship, which is the central point of `EIP-1559`, first run the following command:
 
 ```
 yarn hardhat run scripts/gasFeeEstimator.js --network mainnet
@@ -194,9 +194,9 @@ The result should look something similar to this:
 ```
 Let's analyze the results:
 
-In Ethereum, blocks have a target of `15,000,000` gas and a `gasLimit` of `30,000,000` gas, depending on how full the previous block was, at protocol level the `baseFeePerGas` is either increased or decreased accordingly.
+In Ethereum, blocks have a target of `15,000,000` gas and a `gasLimit` of `30,000,000` gas, depending on how full was the previous block, at protocol level the `baseFeePerGas` is either increased or decreased accordingly.
 
-Block 16308999 was 66% full which is 16% above the target of 50%, this means that for the next block the `baseFeePerGas` will be increased by approximately a 12.5% ratio and that's what happened -- the base fee increased from 13969109554 to 14539817524 for block 16309000. The opposite the occured for block 16309001, since block 16309000 was 27.66% full, the base fee decreased by a 12.5% ratio from 14539817524 to 13728044972.
+Block 16308999 was 66% full which is 16% above the target of 50%, this means that for the next block the `baseFeePerGas` will be increased by approximately a 12.5% and that's what happened -- the base fee increased from 13969109554 to 14539817524 for block 16309000. The opposite the occured for block 16309001, since block 16309000 was 27.66% full, the base fee decreased by a 12.5% from 14539817524 to 13728044972.
 
 ## Giving estimates
 
@@ -247,14 +247,14 @@ Manual estimate: 1045851079
 Recommended value by the network: 1500000000
 ```
 
-Our estimator recommended a priority fee of 1045851079 wei, which represents approximately a 30% in saved gas from the recommended value from the network. This is not a bad estimation.
+Our estimator recommended a priority fee of 1045851079 wei, which represents approximately a 30% saved gas from the recommended value from the network. This is not a bad estimation.
 
 
 ### Presenting the three options with full estimates
 
 So far we've only made an estimation for the `maxPriorityFeePerGas` that the user should bid, but users usually are more interested in knowing the maximum amount of fee they will have to pay and not just the tip. The value that represents the full fee to pay is the `maxFeePerGas` which value is the sum of the `maxPriorityFeePerGas` and the `baseFeePerGas`.
 
-Now let's present to the users the full fee to pay and the `slow`, `average` and `fast` options they might consider to bid.
+Now let's present to the users the range of full fee to pay as `slow`, `average` and `fast` options.
 
 We need to refactor our `gasEstimator` again, make it look like this:
 
@@ -299,12 +299,20 @@ The result:
 Manual estimate: { slow: 14271043641, average: 14396043641, fast: 15146143641 }
 ```
 
+## Final thoughts 💭
+
+This estimator as it is, might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not result in good performance.
+
+Usually clients like Geth use entities called "Oracles" whose only job is keeping track of blocks and other data. Geth will ask the Oracle for a current estimate of the fees and get an immediate answer.
+
+Currently we're calculating the 30th, 60th and 90th percentiles of the `maxPriorityFeePerGas`, but you could change this values to get the 10th percentile and even the 1th percentiles to offer lower fees that have been paid in transactions. Just keep in mind that paying a lower bid is proportional to wait longer period of time for the transaction to be picked up and included in a block.
+
+## Resources
+
+[Gas and fees](https://ethereum.org/en/developers/docs/gas/)
+
 ## Outro ⭐️
 
-Congratulations 💯 for completing this tutorial, it was fun building this estimator, but it might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not result in good performance.
-
-Usually clients like Geth use entities called "Oracles" whose only job is keeping track of blocks and other data. Geth will ask the Oracle for a current estimate of the fees and get a immediate answer.
-
-Despite not being a estimator for production, we learned a lot about how the EVM works regarding fees.
+Congratulations 💯 for completing this tutorial, despite this estimator might not being viable for production is was fun building, we learned a lot about how the EVM works regarding fees.
 
 I hope you enjoyed this tutorial and I encouraged you to make your own modifications and try new things. 👩🏻‍💻 🎉 👨🏻‍💻 🎉

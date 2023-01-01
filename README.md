@@ -314,12 +314,12 @@ The result:
 Manual estimate: { slow: 14271043641, average: 14396043641, fast: 15146143641 }
 ```
 
-## Outro
+## Outro ⭐️
 
-It was fun building this estimator, but it might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not resulto in good performance.
+Congratulations 💯 for completing this tutorial, it was fun building this estimator, but it might not be viable for production. Running these calculations for personal purposes might work but serving an app that handle thousands of transactions per second might not resulto in good performance.
 
 Usually clients like Geth use entities called "Oracles" whose only job is keeping track of blocks and other data. Geth will ask the Oracle for a current estimate of the fees and get a immediate answer.
 
 Despite not being a estimator for production, we learned a lot about how the EVM works regarding fees.
 
-I hope you enjoyed this tutorial and I encouraged you to make your own modifications and try new things.
+I hope you enjoyed this tutorial and I encouraged you to make your own modifications and try new things. 👩🏻‍💻 🎉 👨🏻‍💻 🎉
